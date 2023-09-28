@@ -23,6 +23,7 @@ export default function Welcome() {
   const loadData = useCallback(
     async () => {
       const ownerP: Promise<string> = lottery.methods.owner().call();
+      // alternate to get balance:  await web3.eth.getBalance(lottery.options.address);
       const balanceP: Promise<string> = lottery.methods.lotteryBalance().call();
       const playersP: Promise<string[]> = lottery.methods.getPlayers().call();
       const [owner, balance, players] = await Promise.all([ownerP, balanceP, playersP]);
